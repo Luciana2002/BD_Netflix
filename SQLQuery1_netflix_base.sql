@@ -1,10 +1,14 @@
-SELECT * FROM netflix_titles
-
+-------------------------
 -- CREAR BASE DE DATOS --
+-------------------------
+
 CREATE DATABASE netflix
 USE netflix
 
--- DEFINIR TABLAS -- 
+--------------------
+-- DEFINIR TABLAS --
+--------------------
+  
 CREATE TABLE actor
 (
   id_actor INT IDENTITY(1, 1),
@@ -53,7 +57,7 @@ CREATE TABLE Show
   titulo VARCHAR(200) NOT NULL,
   fecha_salida date,
   duracion VARCHAR(50),
-  año_lanzamiento smallint NOT NULL,
+  aÃ±o_lanzamiento smallint NOT NULL,
   descripcion VARCHAR(250) NOT NULL,
   id_tipo INT NOT NULL,
   id_rating INT,
