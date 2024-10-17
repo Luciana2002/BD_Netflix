@@ -10,7 +10,7 @@ INSERT INTO tipo_show (descripcion)
 SELECT DISTINCT type
 FROM netflix_titles
 
-select * from tipo_show
+-- select * from tipo_show
 
 ------------------
 -- Tabla Rating --
@@ -21,7 +21,7 @@ SELECT DISTINCT rating
 FROM netflix_titles
 WHERE rating IS NOT NULL
 
-select * from rating
+-- select * from rating
 
 ----------------
 -- Tabla Pais --
@@ -34,7 +34,7 @@ CROSS APPLY STRING_SPLIT(country, ',')
 WHERE country IS NOT NULL AND TRIM(value) <> ''
 ORDER BY descripcion ASC
 
-select * from pais
+-- select * from pais
 
 ---------------------
 -- Tabla Categoría --
@@ -47,7 +47,7 @@ CROSS APPLY STRING_SPLIT(listed_in, ',')
 WHERE listed_in IS NOT NULL
 ORDER BY descripcion ASC
 
-select * from categoria
+-- select * from categoria
 
 -----------------
 -- Tabla Actor --
@@ -60,7 +60,7 @@ CROSS APPLY STRING_SPLIT(cast, ',')
 WHERE cast IS NOT NULL
 ORDER BY nombre_apellido ASC
 
-select * from actor
+-- select * from actor
 
 --------------------
 -- Tabla Director --
@@ -73,7 +73,7 @@ CROSS APPLY STRING_SPLIT(director, ',')
 WHERE director IS NOT NULL
 ORDER BY nombre_apellido ASC
 
-select * from director
+-- select * from director
 
 ----------------
 -- Tabla Show --
@@ -90,7 +90,7 @@ SELECT show_id,
        (SELECT id_rating FROM rating WHERE descripcion = netflix_titles.rating)
 FROM netflix_titles;
 
-select * from Show
+-- select * from Show
 
 ------------------------------------------------------------
 ---------------- INSERTS Tablas intermedias ----------------
@@ -108,7 +108,7 @@ FROM netflix_titles n
 CROSS APPLY STRING_SPLIT(n.director, ',') AS s
 JOIN director d ON TRIM(s.value) = d.nombre_apellido
 
-select * from show_director
+-- select * from show_director
 
 ---------------------
 -- Tabla Show_pais --
@@ -122,7 +122,7 @@ FROM netflix_titles n
 CROSS APPLY STRING_SPLIT(n.country, ',') AS s
 JOIN pais p ON TRIM(s.value) = p.descripcion
 
-select * from show_pais
+-- select * from show_pais
 
 --------------------------
 -- Tabla Show_categoria --
@@ -136,7 +136,7 @@ FROM netflix_titles n
 CROSS APPLY STRING_SPLIT(n.listed_in, ',') AS s
 JOIN categoria c ON TRIM(s.value) = c.descripcion
 
-select * from show_categoria
+-- select * from show_categoria
 
 ------------------
 -- Tabla Elenco --
@@ -150,4 +150,4 @@ FROM netflix_titles n
 CROSS APPLY STRING_SPLIT(n.cast, ',') AS s
 JOIN actor a ON TRIM(s.value) = a.nombre_apellido
 
-select * from elenco
+-- select * from elenco
